@@ -8,6 +8,7 @@ LinkedIn: https://www.linkedin.com/in/tomasz-buga-79933886/
 mail: `kontakt@tomaszbuga.pl`
 
 ## Project Overview
+Live Demo: https://ultimatestackdeveloper.netlify.com
 **Ultimate Stack Developer** is an application for managing micro-scale blog about `whatever you can imagine!`
 
 ### Tech Stack
@@ -66,7 +67,7 @@ Notes:
 ### Run the project
 1. Cloning repository and installation
       - Launch `Terminal.app` and navigate (using `cd` command) to directory, where you'd like to store your copy of the source code
-      - Use the `git clone https://github.com/n4bik/UltimateStackDeveloperBackend.git` command to clone the repository to your local directory
+      - Use the `git clone https://github.com/catnippers/ultimate-stack-developer-backend.git` command to clone the repository to your local directory
       - Navigate (using `cd` command) to the root directory of the project (basically - it's where the `pom.xml` file is located)
       - Run the `mvn clean install` in order to download all the required dependencies to your project's directory
 
