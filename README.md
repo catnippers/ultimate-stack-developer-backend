@@ -1,7 +1,4 @@
 # Ultimate Stack Developer (Backend)
-Project's GitHub:
-https://github.com/catnippers/ultimate-stack-developer-backend
-
 ### Created by Tomasz Buga
  
 GitHub: https://github.com/n4bik
