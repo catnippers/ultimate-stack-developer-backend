@@ -1,0 +1,19 @@
+type Category {
+    id: ID!
+    title: String!
+    tag: String!
+    articles: [Article]
+}
+
+extend type Query {
+    findAllCategories: [Category]!
+    countCategories: Float!
+    findCategoryById(id: ID!): Category!
+}
+
+extend type Mutation {
+    newCategory(title: String!, tag: String!) : Category!
+    deleteCategory(id: ID!) : Boolean
+    updateCategoryTitleById(newTitle: String!, id: ID!) : Category!
+    updateCategoryTagById(newTag: String!, id: ID!) : Category!
+}

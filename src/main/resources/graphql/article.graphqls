@@ -1,0 +1,26 @@
+type Article {
+    id: ID
+    title: String!
+    authorFirstName: String!
+    authorLastName: String!
+    summary: String
+    content: String
+    createDate: String
+    publishDate: String
+    categories: [Category]
+}
+
+type Query {
+    findAllArticles: [Article]!
+    findArticleById(id: ID!): Article!
+    countArticles: Float!
+}
+
+type Mutation {
+    newArticle(title: String!, authorFirstName: String!, authorLastName: String!) : Article!
+    editArticleById(newTitle: String, newSummary: String, newContent: String, id: ID!): Article!
+    deleteArticle(id: ID!) : Boolean
+    updateArticleTitle(newTitle: String!, id: ID!) : Article!
+    assignCategoryToArticle(articleId: ID!, categoryId: ID!) : Boolean
+    removeCategoryFromArticle(articleId: ID!, categoryId: ID!) : Boolean
+}
