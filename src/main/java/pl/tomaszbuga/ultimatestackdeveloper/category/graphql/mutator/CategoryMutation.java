@@ -32,7 +32,7 @@ public class CategoryMutation implements GraphQLMutationResolver {
 
         category.setTitle(newTitle);
         return categoryRepository.save(category);
-    
+    }
 
     public Category updateCategoryTagById(String newTag, Long id) {
         Category category = categoryRepository
