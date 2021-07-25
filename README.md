@@ -35,7 +35,7 @@ multiple containers together using the docker-compose library)
 Backend of the UltimateStackDeveloper app uses the CORS to secure API requests made by browsers and narrows it down
 to `https://ultimatestackdevleoper.netlify.app` by default (as it is the production server address).
 
-### Development Tips
+### CORS Security Toggle
 Modify this line in order to remove/add CORS security `src/main/java/pl/tomaszbuga/ultimatestackdeveloper/config/JwtSecurityConfig.java:56` (`corsConfigurationSource()`)
 
 ## Upcoming fixes (a.k.a. To-Do List)
