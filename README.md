@@ -36,19 +36,18 @@ Backend of the UltimateStackDeveloper app uses the CORS to secure API requests m
 to `https://ultimatestackdevleoper.netlify.app` by default (as it is the production server address).
 
 ### Development Tips
-Feel free to modify the `JwtSecurityConfig.java` > `corsConfigurationSource()` method as required
+Modify this line in order to remove/add CORS security `src/main/java/pl/tomaszbuga/ultimatestackdeveloper/config/JwtSecurityConfig.java:56` (`corsConfigurationSource()`)
 
 ## Upcoming fixes (a.k.a. To-Do List)
 1. Create User handling mechanism (registration/login for the client-side of the app) (*TO DO AFTER FIXING THE FRONTEND PART OF THE APP*)
 2. Create landing page with Docs section for the UltimateStackDeveloper app (TO DO)
 
 ## Getting started
-### on macOS:
 Prerequisites
 - Java 8 SDK (https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
 - Apache Maven (https://maven.apache.org/download.cgi)
 - Docker Desktop (including Docker CLI/Compose) (https://www.docker.com/products/docker-desktop)
-
+### Setup on macOS:
 ### Setting up the Docker embedded PostgreSQL database
 In order to persist the data we need a database (duh!). I've chosen the PostgreSQL, as it's easy and commonly used.
 1. Launch `Terminal.app` and navigate (using `cd` command) to the `infrastructure/docker-compose/postgres` directory
@@ -76,5 +75,5 @@ Notes:
       - Launch `Terminal.app` and navigate (using `cd` command) to the project's directory
       - Use the `mvn spring-boot:run` command to launch the `spring-boot:run` from `Maven` plugins
 
-### on Windows: (TBA)
-### on Linux: (TBA)
+### Setup on Windows: (TBA)
+### Setup on Linux: (TBA)
