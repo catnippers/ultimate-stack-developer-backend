@@ -21,6 +21,6 @@ type Mutation {
     editArticleById(newTitle: String, newSummary: String, newContent: String, id: ID!): Article!
     deleteArticle(id: ID!) : Boolean
     updateArticleTitle(newTitle: String!, id: ID!) : Article!
-    assignCategoryToArticle(articleId: ID!, categoryId: ID!) : Boolean
-    removeCategoryFromArticle(articleId: ID!, categoryId: ID!) : Boolean
+    assignCategoryToArticle(articleId: ID!, categoryId: ID!) : Article
+    removeCategoryFromArticle(articleId: ID!, categoryId: ID!) : Article
 }

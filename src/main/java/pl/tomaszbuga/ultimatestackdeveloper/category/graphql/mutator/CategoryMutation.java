@@ -17,9 +17,7 @@ public class CategoryMutation implements GraphQLMutationResolver {
     }
 
     public Category newCategory(String title, String tag) {
-        Category category = new Category(title, tag);
-        categoryRepository.save(category);
-        return category;
+        return categoryRepository.save(new Category(title, tag));
     }
 
     public boolean deleteCategory(Long id) {
@@ -28,28 +26,20 @@ public class CategoryMutation implements GraphQLMutationResolver {
     }
 
     public Category updateCategoryTitleById(String newTitle, Long id) {
-        Optional<Category> optionalCategory = categoryRepository.findById(id);
+        Category category = categoryRepository
+                .findById(id)
+                .orElseThrow(() -> new CategoryNotFoundException("Category not found", id));
 
-        if (optionalCategory.isPresent()) {
-            Category category = optionalCategory.get();
-            category.setTitle(newTitle);
-            categoryRepository.save(category);
-            return category;
-        } else {
-            throw new CategoryNotFoundException("Category not found", id);
-        }
+        category.setTitle(newTitle);
+        return categoryRepository.save(category);
     }
 
     public Category updateCategoryTagById(String newTag, Long id) {
-        Optional<Category> optionalCategory = categoryRepository.findById(id);
+        Category category = categoryRepository
+                .findById(id)
+                .orElseThrow(() -> new CategoryNotFoundException("Category not found", id));
 
-        if (optionalCategory.isPresent()) {
-            Category category = optionalCategory.get();
-            category.setTag(newTag);
-            categoryRepository.save(category);
-            return category;
-        } else {
-            throw new CategoryNotFoundException("Category not found", id);
-        }
+        category.setTag(newTag);
+        return categoryRepository.save(category);
     }
 }
