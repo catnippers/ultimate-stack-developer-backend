@@ -6,6 +6,7 @@ import pl.tomaszbuga.ultimatestackdeveloper.category.Category;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -75,5 +76,23 @@ public class Article {
     public Article setCategories(Set<Category> categories) {
         this.categories = categories;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Article article = (Article) o;
+        return id.equals(article.id) &&
+                title.equals(article.title) &&
+                Objects.equals(authorFirstName, article.authorFirstName) &&
+                Objects.equals(authorLastName, article.authorLastName) &&
+                Objects.equals(summary, article.summary) &&
+                Objects.equals(content, article.content);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, authorFirstName, authorLastName, summary, content);
     }
 }

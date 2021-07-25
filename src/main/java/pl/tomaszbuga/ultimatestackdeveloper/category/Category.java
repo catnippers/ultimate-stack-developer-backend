@@ -41,4 +41,19 @@ public class Category {
     public Set<Article> getArticles() {
         return articles;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Category category = (Category) o;
+        return id.equals(category.id) &&
+                title.equals(category.title) &&
+                tag.equals(category.tag);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, tag);
+    }
 }
