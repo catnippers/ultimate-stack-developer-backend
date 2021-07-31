@@ -1,3 +1,5 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ca2ee88e52a643fab2ba892a1cb73082)](https://www.codacy.com/gh/catnippers/ultimate-stack-developer-backend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=catnippers/ultimate-stack-developer-backend&amp;utm_campaign=Badge_Grade)
+
 # Ultimate Stack Developer (Backend)
 ### Created by Tomasz Buga
  
