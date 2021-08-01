@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.tomaszbuga.ultimatestackdeveloper.user.User;
 import pl.tomaszbuga.ultimatestackdeveloper.user.UserRepository;
 
+import java.util.Optional;
+
 @RestController
 public class TokenController {
     private final JwtGenerator jwtGenerator;
@@ -17,16 +19,18 @@ public class TokenController {
         this.userRepository = userRepository;
     }
 
+    // todo handle in service, and use bcryptpassword encoder/decoder instead
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Object generate(@RequestBody final User user) {
-        if (userRepository.findByUsername(user.getUsername()) != null
-                && userRepository.findByUsername(user.getUsername())
-                .getPassword()
-                .equals(user.getPassword())) {
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .header("Content-Type", "application/json")
-                    .body("{\"token\":\"" + jwtGenerator.generate(user) + "\"}");
+        Optional<User> userOptional = userRepository.findByUsername(user.getUsername());
+
+        if (userOptional.isPresent()) {
+            if (userOptional.get().getPassword().equals(user.getPassword())) {
+                return ResponseEntity
+                        .status(HttpStatus.OK)
+                        .header("Content-Type", "application/json")
+                        .body("{\"token\":\"" + jwtGenerator.generate(user) + "\"}");
+            }
         }
 
         return ResponseEntity

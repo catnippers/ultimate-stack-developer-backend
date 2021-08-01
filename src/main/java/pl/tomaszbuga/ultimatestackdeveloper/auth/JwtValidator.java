@@ -8,13 +8,14 @@ import pl.tomaszbuga.ultimatestackdeveloper.user.UserRepository;
 
 @Component
 public class JwtValidator {
-    private String secret = "Graphql";
+    private static final String secret = "Graphql";
     private final UserRepository userRepository;
 
     public JwtValidator(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
+    // todo do not return null object, throw exception instead
     public User validate(String token) {
         User user = null;
         Claims body = Jwts.parser()
@@ -24,8 +25,9 @@ public class JwtValidator {
 
         String username = body.getSubject();
 
-        if (userRepository.findByUsername(username) != null) {
-            user = userRepository.findByUsername(username);
+        // maybe take advantage of ifPresent
+        if (userRepository.findByUsername(username).isPresent()) {
+            user = userRepository.findByUsername(username).get();
         }
 
         return user;
