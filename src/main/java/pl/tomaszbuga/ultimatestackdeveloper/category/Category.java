@@ -1,5 +1,6 @@
 package pl.tomaszbuga.ultimatestackdeveloper.category;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import pl.tomaszbuga.ultimatestackdeveloper.article.Article;
 
@@ -7,6 +8,7 @@ import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
+@EqualsAndHashCode(exclude = {"articles"})
 @Entity
 @Table(name = "category")
 @Data
@@ -20,10 +22,12 @@ public class Category {
             name = "title",
             nullable = false)
     private String title;
+
     @Column(
             name = "tag",
             nullable = false)
     private String tag;
+
     @ManyToMany(
             mappedBy = "categories",
             fetch = FetchType.EAGER)
@@ -40,20 +44,5 @@ public class Category {
 
     public Set<Article> getArticles() {
         return articles;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
-        return id.equals(category.id) &&
-                title.equals(category.title) &&
-                tag.equals(category.tag);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, tag);
     }
 }

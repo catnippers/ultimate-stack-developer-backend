@@ -5,16 +5,12 @@ import org.springframework.stereotype.Component;
 import pl.tomaszbuga.ultimatestackdeveloper.article.Article;
 import pl.tomaszbuga.ultimatestackdeveloper.article.ArticleRepository;
 import pl.tomaszbuga.ultimatestackdeveloper.article.graphql.exception.ArticleNotFoundException;
-import pl.tomaszbuga.ultimatestackdeveloper.category.Category;
-import pl.tomaszbuga.ultimatestackdeveloper.category.CategoryRepository;
-import pl.tomaszbuga.ultimatestackdeveloper.category.graphql.exception.CategoryNotFoundException;
 
-import java.util.List;
 import java.util.Optional;
 
 @Component
 public class ArticleResolver implements GraphQLQueryResolver {
-    private ArticleRepository articleRepository;
+    private final ArticleRepository articleRepository;
 
     public ArticleResolver(ArticleRepository articleRepository) {
         this.articleRepository = articleRepository;

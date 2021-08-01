@@ -11,7 +11,6 @@ import pl.tomaszbuga.ultimatestackdeveloper.category.CategoryRepository;
 import pl.tomaszbuga.ultimatestackdeveloper.category.graphql.exception.CategoryNotFoundException;
 
 import java.util.Optional;
-import java.util.Set;
 
 @Component
 @RequiredArgsConstructor

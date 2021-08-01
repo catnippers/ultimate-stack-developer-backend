@@ -2,11 +2,9 @@ package pl.tomaszbuga.ultimatestackdeveloper.category.graphql.mutator;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import org.springframework.stereotype.Component;
-import pl.tomaszbuga.ultimatestackdeveloper.category.CategoryRepository;
 import pl.tomaszbuga.ultimatestackdeveloper.category.Category;
+import pl.tomaszbuga.ultimatestackdeveloper.category.CategoryRepository;
 import pl.tomaszbuga.ultimatestackdeveloper.category.graphql.exception.CategoryNotFoundException;
-
-import java.util.Optional;
 
 @Component
 public class CategoryMutation implements GraphQLMutationResolver {
