@@ -1,10 +1,14 @@
 package pl.tomaszbuga.ultimatestackdeveloper.auth;
 
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import pl.tomaszbuga.ultimatestackdeveloper.dto.UserDTO;
 import pl.tomaszbuga.ultimatestackdeveloper.user.User;
 import pl.tomaszbuga.ultimatestackdeveloper.user.UserRepository;
@@ -18,6 +22,7 @@ public class TokenController {
     private final JwtGenerator jwtGenerator;
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final ModelMapper modelMapper;
 
     // todo handle these in a service
     @PostMapping("login")
@@ -42,6 +47,9 @@ public class TokenController {
     // todo complete signup logic
     @PutMapping("signup")
     public ResponseEntity<String> signup(@RequestBody final UserDTO userDTO) {
+        User user = modelMapper.map(userDTO, User.class);
+        //user.setRole(""); // todo create roles as enum
+        userRepository.save(user);
         return ResponseEntity.ok("");
     }
 }
