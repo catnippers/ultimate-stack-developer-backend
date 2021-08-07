@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import pl.tomaszbuga.ultimatestackdeveloper.dto.UserDTO;
 import pl.tomaszbuga.ultimatestackdeveloper.user.User;
 import pl.tomaszbuga.ultimatestackdeveloper.user.UserRepository;
 
@@ -40,7 +41,7 @@ public class TokenController {
 
     // todo complete signup logic
     @PutMapping("signup")
-    public ResponseEntity<String> signup(@RequestBody final User user) {
+    public ResponseEntity<String> signup(@RequestBody final UserDTO userDTO) {
         return ResponseEntity.ok("");
     }
 }
