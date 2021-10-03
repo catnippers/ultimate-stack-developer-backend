@@ -8,6 +8,6 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 #
 # Back End Package stage
 #
-FROM gcr.io/distroless/java
+FROM gcr.io/distroless/java:11
 COPY --from=build /usr/src/app/target/*.jar /usr/app/app.jar
 ENTRYPOINT ["java","-jar","/usr/app/app.jar"]
