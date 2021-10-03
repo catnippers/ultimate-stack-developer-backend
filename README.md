@@ -1,6 +1,9 @@
 <img alt="Catnippers Social Club" src="https://github.com/catnippers/catnippers-landing-page/blob/evan/src/images/catnippers_logotype-01%201.png" />
+
 # Ultimate Stack Developer (Backend)
+
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/ca2ee88e52a643fab2ba892a1cb73082)](https://www.codacy.com/gh/catnippers/ultimate-stack-developer-backend/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=catnippers/ultimate-stack-developer-backend&amp;utm_campaign=Badge_Grade)
+
 Created by Tomasz Buga
 
 GitHub: https://github.com/n4bik
