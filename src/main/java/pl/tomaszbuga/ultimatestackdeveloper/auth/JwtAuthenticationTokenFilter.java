@@ -3,6 +3,7 @@ package pl.tomaszbuga.ultimatestackdeveloper.auth;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import pl.tomaszbuga.ultimatestackdeveloper.auth.exceptions.MissingJWTTokenException;
 import pl.tomaszbuga.ultimatestackdeveloper.auth.models.JwtAuthenticationToken;
 
 import javax.servlet.FilterChain;
@@ -26,7 +27,7 @@ public class JwtAuthenticationTokenFilter extends AbstractAuthenticationProcessi
         String header = httpServletRequest.getHeader("Authorization");
 
         if (header == null || !header.startsWith("Bearer ")) {
-            throw new RuntimeException("JWT Token is missing");
+            throw new MissingJWTTokenException();
         }
 
         String authenticationToken = header.substring(7);

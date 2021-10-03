@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import pl.tomaszbuga.ultimatestackdeveloper.auth.exceptions.IncorrectJWTTokenException;
 import pl.tomaszbuga.ultimatestackdeveloper.auth.models.JwtAuthenticationToken;
 import pl.tomaszbuga.ultimatestackdeveloper.auth.models.JwtUserDetails;
 import pl.tomaszbuga.ultimatestackdeveloper.user.User;
@@ -31,7 +32,7 @@ public abstract class JwtAuthenticationProvider extends AbstractUserDetailsAuthe
         User user = validator.validate(token);
 
         if (user == null) {
-            throw new RuntimeException("JWT Token is incorrect");
+            throw new IncorrectJWTTokenException();
         }
 
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils
