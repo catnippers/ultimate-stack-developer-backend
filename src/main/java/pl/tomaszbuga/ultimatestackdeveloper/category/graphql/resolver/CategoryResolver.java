@@ -2,8 +2,8 @@ package pl.tomaszbuga.ultimatestackdeveloper.category.graphql.resolver;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.springframework.stereotype.Component;
-import pl.tomaszbuga.ultimatestackdeveloper.category.CategoryRepository;
 import pl.tomaszbuga.ultimatestackdeveloper.category.Category;
+import pl.tomaszbuga.ultimatestackdeveloper.category.CategoryRepository;
 import pl.tomaszbuga.ultimatestackdeveloper.category.graphql.exception.CategoryNotFoundException;
 
 import java.util.Optional;

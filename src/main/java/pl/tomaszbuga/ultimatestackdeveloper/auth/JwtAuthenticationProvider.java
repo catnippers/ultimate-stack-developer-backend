@@ -1,5 +1,6 @@
 package pl.tomaszbuga.ultimatestackdeveloper.auth;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
@@ -14,11 +15,10 @@ import pl.tomaszbuga.ultimatestackdeveloper.user.User;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Component
 public class JwtAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
-
-    @Autowired
-    private JwtValidator validator;
+    private final JwtValidator validator;
 
     @Override
     protected void additionalAuthenticationChecks(

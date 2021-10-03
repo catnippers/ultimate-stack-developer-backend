@@ -11,6 +11,7 @@ import java.util.Date;
 
 @Component
 public class JwtGenerator {
+
     public String generate(User user) {
         final Date EXP_DATE = Date.from(ZonedDateTime.now().plusMinutes(30).toInstant());
 

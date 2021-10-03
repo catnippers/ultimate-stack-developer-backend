@@ -1,36 +1,55 @@
 package pl.tomaszbuga.ultimatestackdeveloper.auth;
 
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import pl.tomaszbuga.ultimatestackdeveloper.dto.UserDTO;
 import pl.tomaszbuga.ultimatestackdeveloper.user.User;
 import pl.tomaszbuga.ultimatestackdeveloper.user.UserRepository;
 
+import java.util.Optional;
+
+// todo name it as "PublicController"
+@RequiredArgsConstructor
 @RestController
 public class TokenController {
     private final JwtGenerator jwtGenerator;
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
+    private final ModelMapper modelMapper;
 
-    public TokenController(JwtGenerator jwtGenerator,
-                           UserRepository userRepository) {
-        this.jwtGenerator = jwtGenerator;
-        this.userRepository = userRepository;
-    }
+    // todo handle these in a service
+    @PostMapping("login")
+    public ResponseEntity<String> generate(@RequestBody final User user) {
+        Optional<User> userOptional = userRepository.findByUsername(user.getUsername());
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Object generate(@RequestBody final User user) {
-        if (userRepository.findByUsername(user.getUsername()) != null
-                && userRepository.findByUsername(user.getUsername())
-                .getPassword()
-                .equals(user.getPassword())) {
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .header("Content-Type", "application/json")
-                    .body("{\"token\":\"" + jwtGenerator.generate(user) + "\"}");
+        // todo throw exception if not present and catch at RestControllerAdvice
+        if (userOptional.isPresent()) {
+            if (passwordEncoder.matches(user.getPassword(), userOptional.get().getPassword())) {
+                return ResponseEntity
+                        .status(HttpStatus.OK)
+                        .header("Content-Type", "application/json")
+                        .body("{\"token\":\"" + jwtGenerator.generate(user) + "\"}");
+            }
         }
 
         return ResponseEntity
                 .status(HttpStatus.UNAUTHORIZED)
                 .body("Provided credentials are not valid.");
+    }
+
+    // todo complete signup logic
+    @PutMapping("signup")
+    public ResponseEntity<String> signup(@RequestBody final UserDTO userDTO) {
+        User user = modelMapper.map(userDTO, User.class);
+        //user.setRole(""); // todo create roles as enum
+        userRepository.save(user);
+        return ResponseEntity.ok("");
     }
 }

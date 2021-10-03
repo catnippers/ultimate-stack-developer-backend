@@ -7,10 +7,9 @@ import java.util.Collection;
 import java.util.List;
 
 public class JwtUserDetails implements UserDetails {
-
-    private final String userName;
-    private final String token;
-    private final String password;
+    private String userName;
+    private String token;
+    private String password;
     private final Collection<? extends GrantedAuthority> authorities;
 
     public JwtUserDetails(

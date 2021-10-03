@@ -1,6 +1,7 @@
 package pl.tomaszbuga.ultimatestackdeveloper.article.graphql.mutator;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.tomaszbuga.ultimatestackdeveloper.article.Article;
 import pl.tomaszbuga.ultimatestackdeveloper.article.ArticleRepository;
@@ -10,18 +11,12 @@ import pl.tomaszbuga.ultimatestackdeveloper.category.CategoryRepository;
 import pl.tomaszbuga.ultimatestackdeveloper.category.graphql.exception.CategoryNotFoundException;
 
 import java.util.Optional;
-import java.util.Set;
 
 @Component
+@RequiredArgsConstructor
 public class ArticleMutation implements GraphQLMutationResolver {
     private final ArticleRepository articleRepository;
     private final CategoryRepository categoryRepository;
-
-    public ArticleMutation(ArticleRepository articleRepository,
-                           CategoryRepository categoryRepository) {
-        this.articleRepository = articleRepository;
-        this.categoryRepository = categoryRepository;
-    }
 
     public Article newArticle(
             String title,
@@ -78,7 +73,7 @@ public class ArticleMutation implements GraphQLMutationResolver {
         Category category = categoryRepository
                 .findById(categoryId)
                 .orElseThrow(() -> new CategoryNotFoundException("Category not found", categoryId));
-
+      
         return articleRepository.save(article.addCategory(category));
     }
 

@@ -1,15 +1,20 @@
 package pl.tomaszbuga.ultimatestackdeveloper.article;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import pl.tomaszbuga.ultimatestackdeveloper.category.Category;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@EqualsAndHashCode(of = {"id", "title", "authorFirstName", "authorLastName", "summary", "content"})
 @Entity
 @Table(name = "article")
+@Data
+@NoArgsConstructor
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,9 +49,6 @@ public class Article {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
-    public Article() {
-    }
-
     public Article(Long id) {
         this.id = id;
     }
@@ -59,54 +61,6 @@ public class Article {
         this.authorFirstName = authorFirstName;
         this.authorLastName = authorLastName;
         this.createDate = LocalDate.now();
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthorFirstName() {
-        return authorFirstName;
-    }
-
-    public void setAuthorFirstName(String authorFirstName) {
-        this.authorFirstName = authorFirstName;
-    }
-
-    public String getAuthorLastName() {
-        return authorLastName;
-    }
-
-    public void setAuthorLastName(String authorLastName) {
-        this.authorLastName = authorLastName;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Article addCategory(Category category) {
@@ -124,39 +78,5 @@ public class Article {
     public Article setCategories(Set<Category> categories) {
         this.categories = categories;
         return this;
-    }
-
-    public LocalDate getPublishDate() {
-        return publishDate;
-    }
-
-    public void setPublishDate(LocalDate publishDate) {
-        this.publishDate = publishDate;
-    }
-
-    public LocalDate getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(LocalDate createDate) {
-        this.createDate = createDate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Article article = (Article) o;
-        return id.equals(article.id) &&
-                title.equals(article.title) &&
-                Objects.equals(authorFirstName, article.authorFirstName) &&
-                Objects.equals(authorLastName, article.authorLastName) &&
-                Objects.equals(summary, article.summary) &&
-                Objects.equals(content, article.content);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, authorFirstName, authorLastName, summary, content);
     }
 }
