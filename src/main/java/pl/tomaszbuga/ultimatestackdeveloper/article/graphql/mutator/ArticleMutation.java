@@ -70,41 +70,27 @@ public class ArticleMutation implements GraphQLMutationResolver {
         }
     }
 
-    public Boolean assignCategoryToArticle(Long articleId, Long categoryId) {
-        Optional<Article> optionalArticle = articleRepository.findById(articleId);
-        Optional<Category> optionalCategory = categoryRepository.findById(categoryId);
+    public Article assignCategoryToArticle(Long articleId, Long categoryId) {
+        Article article = articleRepository
+                .findById(articleId)
+                .orElseThrow(() -> new ArticleNotFoundException("Article not found", articleId));
 
-        if (!optionalArticle.isPresent()) {
-            throw new ArticleNotFoundException("Article not found", articleId);
-        }
-        if (!optionalCategory.isPresent()) {
-            throw new CategoryNotFoundException("Category not found", categoryId);
-        }
+        Category category = categoryRepository
+                .findById(categoryId)
+                .orElseThrow(() -> new CategoryNotFoundException("Category not found", categoryId));
 
-        articleRepository
-                .save(optionalArticle
-                        .get()
-                        .addCategory(optionalCategory.get()));
-
-        return true;
+        return articleRepository.save(article.addCategory(category));
     }
 
-    public Boolean removeCategoryFromArticle(Long articleId, Long categoryId) {
-        Optional<Article> optionalArticle = articleRepository.findById(articleId);
-        Optional<Category> optionalCategory = categoryRepository.findById(categoryId);
+    public Article removeCategoryFromArticle(Long articleId, Long categoryId) {
+        Article article = articleRepository
+                .findById(articleId)
+                .orElseThrow(() -> new ArticleNotFoundException("Article not found", articleId));
 
-        if (!optionalArticle.isPresent()) {
-            throw new ArticleNotFoundException("Article not found", articleId);
-        }
-        if (!optionalCategory.isPresent()) {
-            throw new CategoryNotFoundException("Category not found", categoryId);
-        }
+        Category category = categoryRepository
+                .findById(categoryId)
+                .orElseThrow(() -> new CategoryNotFoundException("Category not found", categoryId));
 
-        articleRepository
-                .save(optionalArticle
-                        .get()
-                        .removeCategory(optionalCategory.get()));
-
-        return true;
+        return articleRepository.save(article.removeCategory(category));
     }
 }

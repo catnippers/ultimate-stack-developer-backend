@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: db
+    image: postgres
+    ports:
+      - "5431:5432"
+    restart: always
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_PASSWORD: b4Dg3r
+
+  usd:
+    container_name: usb_backend
+    build: .
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres
+    ports:
+      - "8082:8082"

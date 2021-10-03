@@ -53,7 +53,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // for development environment please use
         // configuration.setAllowedOrigins(Arrays.asList("*"));
-        configuration.setAllowedOrigins(Arrays.asList("https://ultimatestackdeveloper.netlify.app"));
+        configuration.setAllowedOrigins(Arrays.asList("*"));
 
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("authorization", "content-type", "x-auth-token"));

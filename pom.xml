@@ -19,7 +19,7 @@
         <kotlin.version>1.3.70</kotlin.version>
         <spring.jwt.version>1.1.1.RELEASE</spring.jwt.version>
         <jjwt.version>0.9.1</jjwt.version>
-        <postgresql.version>42.2.18</postgresql.version>
+        <postgresql.version>42.2.24.jre7</postgresql.version>
         <graphql.starter.version>5.0.2</graphql.starter.version>
         <graphql.tools.version>5.2.4</graphql.tools.version>
         <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>

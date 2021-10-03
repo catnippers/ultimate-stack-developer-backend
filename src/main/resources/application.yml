@@ -6,9 +6,9 @@ graphql:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.0.102:5431/usd
+    url: jdbc:postgresql://localhost:5431/postgres
     username: postgres
-    password: b4Dg3R
+    password: b4Dg3r
   jpa:
     hibernate:
       ddl-auto: update
