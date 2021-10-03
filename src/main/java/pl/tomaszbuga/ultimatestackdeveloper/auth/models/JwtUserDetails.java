@@ -8,10 +8,10 @@ import java.util.List;
 
 public class JwtUserDetails implements UserDetails {
 
-    private String userName;
-    private String token;
-    private String password;
-    private Collection<? extends GrantedAuthority> authorities;
+    private final String userName;
+    private final String token;
+    private final String password;
+    private final Collection<? extends GrantedAuthority> authorities;
 
     public JwtUserDetails(
             String userName,
