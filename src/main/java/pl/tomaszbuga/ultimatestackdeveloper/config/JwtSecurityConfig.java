@@ -48,10 +48,10 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration configuration = new CorsConfiguration();
 
         // for production environment please use
-        // configuration.setAllowedOrigins(Arrays.asList("https://ultimatestackdeveloper.netlify.app"));
+        // configuration.setAllowedOrigins(Collections.singletonList("https://ultimatestackdeveloper.netlify.app"));
 
         // for development environment please use
-        // configuration.setAllowedOrigins(Arrays.asList("*"));
+        // configuration.setAllowedOrigins(Collections.singletonList("*"));
         configuration.setAllowedOrigins(Collections.singletonList("*"));
 
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));

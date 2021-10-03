@@ -73,7 +73,7 @@ public class ArticleMutation implements GraphQLMutationResolver {
         Category category = categoryRepository
                 .findById(categoryId)
                 .orElseThrow(() -> new CategoryNotFoundException("Category not found", categoryId));
-
+      
         return articleRepository.save(article.addCategory(category));
     }
 
