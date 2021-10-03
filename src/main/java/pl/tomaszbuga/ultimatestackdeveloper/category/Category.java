@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import pl.tomaszbuga.ultimatestackdeveloper.article.Article;
 
 import javax.persistence.*;
-import java.util.Objects;
 import java.util.Set;
 
 @EqualsAndHashCode(exclude = {"articles"})

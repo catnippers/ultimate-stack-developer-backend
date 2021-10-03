@@ -16,15 +16,8 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Component
-public class JwtAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
+public abstract class JwtAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
     private final JwtValidator validator;
-
-    @Override
-    protected void additionalAuthenticationChecks(
-            UserDetails userDetails,
-            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken)
-            throws AuthenticationException {
-    }
 
     @Override
     protected UserDetails retrieveUser(
