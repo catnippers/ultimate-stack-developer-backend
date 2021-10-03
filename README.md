@@ -44,7 +44,7 @@ to `https://ultimatestackdevleoper.netlify.app` (disabled by default)
 Modify this line in order to remove/add CORS security `src/main/java/pl/tomaszbuga/ultimatestackdeveloper/config/JwtSecurityConfig.java:56` (`corsConfigurationSource()`)
 
 ## Getting started
-Prerequisites
+### Prerequisites
 - Java 11 SDK (https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
 - Apache Maven (https://maven.apache.org/download.cgi)
 - Docker Desktop (including Docker CLI/Compose) (https://www.docker.com/products/docker-desktop)
