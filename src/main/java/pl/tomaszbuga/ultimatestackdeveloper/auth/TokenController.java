@@ -30,13 +30,11 @@ public class TokenController {
         Optional<User> userOptional = userRepository.findByUsername(user.getUsername());
 
         // todo throw exception if not present and catch at RestControllerAdvice
-        if (userOptional.isPresent()) {
-            if (passwordEncoder.matches(user.getPassword(), userOptional.get().getPassword())) {
-                return ResponseEntity
-                        .status(HttpStatus.OK)
-                        .header("Content-Type", "application/json")
-                        .body("{\"token\":\"" + jwtGenerator.generate(user) + "\"}");
-            }
+        if (userOptional.isPresent() && passwordEncoder.matches(user.getPassword(), userOptional.get().getPassword())) {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .header("Content-Type", "application/json")
+                    .body("{\"token\":\"" + jwtGenerator.generate(user) + "\"}");
         }
 
         return ResponseEntity
