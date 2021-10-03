@@ -7,7 +7,6 @@ import pl.tomaszbuga.ultimatestackdeveloper.category.Category;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @EqualsAndHashCode(of = {"id", "title", "authorFirstName", "authorLastName", "summary", "content"})

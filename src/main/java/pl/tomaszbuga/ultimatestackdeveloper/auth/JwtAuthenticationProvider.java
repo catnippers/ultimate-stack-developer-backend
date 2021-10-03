@@ -1,7 +1,6 @@
 package pl.tomaszbuga.ultimatestackdeveloper.auth;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
 import org.springframework.security.core.AuthenticationException;
@@ -30,7 +29,7 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
     @Override
     protected UserDetails retrieveUser(
             String username,
-            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken)
+            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) 
             throws AuthenticationException {
 
         JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) usernamePasswordAuthenticationToken;
