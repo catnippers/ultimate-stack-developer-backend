@@ -10,7 +10,7 @@ GitHub: https://github.com/n4bik
 
 LinkedIn: https://www.linkedin.com/in/tomasz-buga-79933886/
 
-mail: `kontakt@tomaszbuga.pl`
+mail: kontakt@tomaszbuga.pl
 
 ## Project Overview
 Live Demo: https://ultimatestackdeveloper.netlify.com
@@ -19,11 +19,13 @@ Live Demo: https://ultimatestackdeveloper.netlify.com
 
 ## Tech Stack
 Backend part is based on:
+
 `Java 11` with `Spring Boot`
 
 `GraphQL` for managing API communication between the frontend and the backend
 
 `Docker` for easy application setup
+
 ## Key Files Description
 `docker-compose.yml` - this file is used in order to spin up the application in a quick and easy way
 
@@ -39,7 +41,7 @@ Backend of the UltimateStackDeveloper app uses the CORS to secure API requests m
 to `https://ultimatestackdevleoper.netlify.app` (disabled by default)
 
 ### CORS Security Toggle
-Modify this line in order to remove/add CORS security `src/main/java/pl/tomaszbuga/ultimatestackdeveloper/config/JwtSecurityConfig.java:56` (`corsConfigurationSource()`)
+Modify this line in order to remove/add CORS security `src/main/java/pl/tomaszbuga/ultimatestackdeveloper/config/JwtSecurityConfig.java:56` (``corsConfigurationSource()``)
 
 ## Getting started
 ### Prerequisites
@@ -52,8 +54,15 @@ Docker Desktop (including Docker CLI/Compose) (https://www.docker.com/products/d
 ### Clone the repository & run the project
 Launch `Terminal.app` and navigate (using `cd` command) to directory, where you'd like to store your copy of the source code
 
-Use the `git clone https://github.com/catnippers/ultimate-stack-developer-backend.git` command to clone the repository to your local directory
+Use the command below to clone the repository to your local directory
+```
+git clone https://github.com/catnippers/ultimate-stack-developer-backend.git
+``` 
 
 Navigate (using `cd` command) to the root directory of the project (basically - it's where the `pom.xml` file is located)
 
-Run the `docker-compose up` in order to run the application and database in the docker containers using the `Docker Engine`
+Run the command below in order to run the application and database in the docker containers using the `Docker Engine`
+
+```
+docker-compose up
+``` 
