@@ -66,3 +66,21 @@ Run the command below in order to run the application and database in the docker
 ```
 docker-compose up
 ``` 
+
+### Debugging
+For the debugging purposes there is a separate docker-compose-postgres.yml file, so you can deploy PostgreSQL DB on localhost (you can launch it with command below)
+
+```
+docker-compose -f docker-compose-postgres.yml up
+```
+
+In order to use the app with local DB, change the spring.datasource within `application.yml` file accordingly:
+
+```
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5431/postgres
+    username: postgres
+    password: b4Dg3R
+```
