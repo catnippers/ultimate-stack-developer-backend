@@ -17,8 +17,13 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Component
-public abstract class JwtAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
+public class JwtAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
     private final JwtValidator validator;
+
+    @Override
+    protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
+        // added method override, so that class won't be abstract and will load as @Bean properly
+    }
 
     @Override
     protected UserDetails retrieveUser(
